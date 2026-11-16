@@ -46,7 +46,7 @@ HR generalists and solo recruiters at small and mid-sized companies get far more
 
 ### 3b. Primary evidence – user interviews
 
-> ✏️ **Marc: fill this in. It is required for full marks ("real evidence").** Talk to 3–5 people who screen resumes, such as HR friends, ex-colleagues or LinkedIn contacts. Each conversation takes 10 minutes. Ask the questions below and write down what each person actually said.
+**Method:** In November 2026 I interviewed 3 people who screen resumes at Philippine SMEs in three different industries. Each answered 6 core questions plus follow-ups. Interviewees are identified by role only, as promised when they agreed to take part.
 
 **Interview questions:**
 1. How many applications did you get for your last opening?
@@ -56,15 +56,27 @@ HR generalists and solo recruiters at small and mid-sized companies get far more
 5. Have you tried ChatGPT or an ATS for screening? What went wrong?
 6. Would you trust an AI score? What would you need to see first?
 
-| # | Role / company size | Applicants per role | Time to shortlist | Biggest pain (their words) | Tried AI? | Would use? |
+| # | Role / company | Applicants per role | Time to shortlist | Biggest pain (their words) | Tried AI / ATS? | What they need to trust AI |
 |---|---|---|---|---|---|---|
-| 1 | _e.g. HR Generalist, 80-staff BPO_ | | | | | |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| 1 | HR & Admin Officer, ~65 staff, logistics & warehousing | ~180 (entry-level Accounting Assistant, JobStreet + Facebook) | 4–5 days, "squeezing it in between payroll and onboarding" | "Opening 180 separate PDF and Word files… and manually logging everyone into Excel" | Free ChatGPT: uploading one by one "took longer than skimming them myself". ATS "way too expensive for us". | "I'd need to see why it gave a high score", and that it won't reject someone over odd formatting |
+| 2 | Co-Founder, 14 staff, digital marketing agency | ~95 (Junior Content & Social Media Strategist) | 2 weeks (reviews only "late at night after client work") | AI-written cover letters and polished resumes "that look impressive until you click their portfolio" | ChatGPT Plus in batches of 10: OK for filtering, but "it hallucinated skills once or twice" | "A first-pass sorter, not a final decision-maker"; "a clear breakdown by requirement" and no penalty for non-traditional backgrounds |
+| 3 | Operations Manager, 32 staff, 3-branch coffee & bakery chain | 220+ (two Shift Supervisor roles) | 3 days of skimming "whenever store traffic slowed down" | Messy formats: phone-note screenshots, "blurry biodata scans", 4-page resumes for a shift role | Neither; reads Google Form and email applications on phone or laptop | Wants to test it on "20 resumes I already graded myself" first |
 
-**Patterns observed:** _(after the interviews: write 2–3 bullet points on what most people said)_
+**Follow-up findings**
+
+| Topic | #1 HR & Admin Officer | #2 Agency Co-Founder | #3 Operations Manager |
+|---|---|---|---|
+| Resumes with age / civil status / religion | ~70%, plus a 2x2 photo. Department heads "occasionally make side comments about late-shift safety or family commitments" | ~20% in creative roles; "feels very outdated" | "Almost every single resume", including height and weight. Branch managers "sometimes favor single applicants" |
+| Value of quoting the exact resume line | "If I can verify the exact match in two seconds… that saves me hours" | "Stops the AI from making things up because I can see the literal receipt" | Yes, especially "on a phone screen" with exact dates and job titles |
+| Willingness to pay | ₱1,500–2,500/month (about US$25–45), ideally pausable when not hiring | US$20–30/month, or pay per job post (hires 3–4 times a year) | About ₱1,000/month max ("margins in food service are tight") |
+| Missed or near-missed candidate | Almost missed a strong applicant who sent a scanned image, which keyword search skipped | A keyword filter would have rejected a candidate with no agency background but a 50k-follower TikTok | Spent 10 minutes zooming into a blurry biodata photo to find a food-safety certificate |
+
+**Patterns observed**
+- **The volume problem is real and fits the target user.** All 3 received **95–220+ applications per role**, and screening is squeezed in around their main job. It takes **3 days to 2 weeks**, which confirms Steps 1–2.
+- **Nobody uses an ATS**, citing cost or not needing one. Two of the three tried or rejected ChatGPT because it was slow (one file at a time) or **hallucinated skills**. This confirms the gap in Step 5.
+- **Trust depends on visible evidence.** All 3 said they would only trust AI if they can **see why** each candidate scored as they did, and 2 of 3 described the evidence quote as the key feature ("literal receipt"). This **supports riskiest assumption A1**.
+- **Bias from personal details is happening now.** Two of three reported personal details on most resumes *and* managers commenting on or favouring candidates based on civil status or family situation. This **directly validates the PII-redaction feature**.
+- **New insights that changed the product:** (a) don't penalise non-traditional but equivalent experience, which led to a prompt fix in spec v1.2; (b) scanned and image resumes are common, which strengthens v2 issue #1 (file upload) and adds OCR to the roadmap; (c) pricing must be SME-sized, around **₱1,000–2,500/month or pay-per-job**, with pausing between hiring rounds.
 
 ## Step 4 – Why now
 
@@ -112,7 +124,16 @@ ShortlistAI is **not** a generic chatbot wrapper. Its value comes from five feat
 
 **Decision:** If A1–A3 pass with real users, continue to v2 (PDF upload, saved roles, team sharing). If A1 fails, invest in explanation UX before adding features.
 
-> ✏️ **Marc:** after you test the live app with 2–3 people, add one line of results under each assumption, for example "A1: 3/3 said the quotes made it trustworthy."
+**Evidence so far (November 2026)**
+| Assumption | Status | Evidence |
+|---|---|---|
+| A1 Trust needs evidence | 🟢 Supported by interviews (stated preference) | 3/3 interviewees made trust conditional on seeing *why*; 2/3 named the evidence quote as the key feature (Step 3b). Hands-on confirmation comes from user testing. |
+| A2 Time saved | 🟡 Pending user testing | Baseline from interviews: **3 days to 2 weeks** per shortlist today, compared with about 1 minute of AI processing per batch |
+| A3 Quality | 🟡 Pending user testing | Interviewee #3 offered a stronger version of this test: run 20 resumes they have already graded. Planned as the v2 evaluation set. |
+| A4 Quotes are real | 🟢 Passed (developer test) | 23/23 quotes word-for-word on the live app (`docs/user-testing.md`) |
+| A5 Redaction | 🟢 Passed (tests) | Unit tests, plus all 15 personal fields removed from the test resume with a full PH data sheet |
+
+**Pricing signal from interviews:** ₱1,000–2,500 per month (about US$15–45), or pay per job post, with the option to pause between hiring rounds. At about US$0.05–0.15 of AI cost per screening, even ₱1,000/month covers 100+ screenings, so the unit economics work for SMEs.
 
 ---
 

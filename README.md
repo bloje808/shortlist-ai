@@ -108,7 +108,7 @@ The response contains `requirements[]`, ranked `candidates[]` (with score, recom
 - **ShortlistAI suggests; people decide.** Always review the evidence before rejecting anyone.
 
 ## Roadmap (v2)
-PDF/DOCX upload · saved roles and history (Supabase Auth) · team sharing · Filipino/Taglish resume support · bias audit dashboard. See the GitHub Issues.
+PDF/DOCX upload with OCR for scanned or photo resumes (the top request in user interviews) · pay-per-job pricing · saved roles and history (Supabase Auth) · team sharing · an evaluation set of recruiter-graded resumes · Filipino/Taglish resume support. See the GitHub Issues.
 
 ## License
 MIT
