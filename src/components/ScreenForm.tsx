@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { mergeUploadedResumes } from "@/lib/bulkUpload";
 import { LIMITS } from "@/lib/schema";
 
 export interface CandidateDraft {
@@ -60,6 +61,28 @@ export default function ScreenForm({ value, onChange, onSubmit, onLoadSample, on
     const text = await file.text();
     updateCandidate(key, { resumeText: text.slice(0, LIMITS.resumeMax) });
   };
+
+  const bulkInput = useRef<HTMLInputElement | null>(null);
+  const [bulkMessage, setBulkMessage] = useState<string | null>(null);
+
+  const loadMany = async (fileList: FileList | null) => {
+    if (!fileList || fileList.length === 0) return;
+    const files = await Promise.all(Array.from(fileList).map(async (f) => ({ name: f.name, text: await f.text() })));
+    const result = mergeUploadedResumes(value.candidates, files, newCandidate);
+    set({ candidates: result.candidates });
+    setBulkMessage(
+      `Added ${result.added} resume${result.added === 1 ? "" : "s"}.` +
+        (result.skipped.length ? ` Skipped ${result.skipped.length} (limit is ${LIMITS.candidatesMax} candidates): ${result.skipped.join(", ")}` : ""),
+    );
+    if (bulkInput.current) bulkInput.current.value = "";
+  };
+
+  const allEmpty = value.candidates.every((c) => c.resumeText.trim() === "");
+
+  // Clear the upload message after "Clear" empties the form
+  useEffect(() => {
+    if (allEmpty) setBulkMessage(null);
+  }, [allEmpty]);
 
   return (
     <form
@@ -127,16 +150,43 @@ export default function ScreenForm({ value, onChange, onSubmit, onLoadSample, on
 
       {/* Step 2 - Candidates */}
       <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="mb-1 flex items-center justify-between">
+        <div className="mb-1 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-lg font-semibold text-slate-900">
             <span className="mr-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-indigo-600 text-sm text-white">2</span>
             Candidates <span className="text-sm font-normal text-slate-500">({value.candidates.length}/{LIMITS.candidatesMax})</span>
           </h2>
+          <input
+            ref={bulkInput}
+            type="file"
+            multiple
+            accept=".txt,.md,text/plain"
+            className="hidden"
+            aria-label="Upload several resume files"
+            onChange={(e) => loadMany(e.target.files)}
+          />
+          <button
+            type="button"
+            onClick={() => bulkInput.current?.click()}
+            className="rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-indigo-700"
+          >
+            ⬆ Upload several resumes (.txt)
+          </button>
         </div>
         <p className="mb-4 text-sm text-slate-600">
-          Paste resume text or upload a .txt file. Names, contact details, age, sex, civil status and religion are{" "}
-          <strong>removed automatically</strong> before the AI sees them.
+          Paste resume text, upload one file per box, or select up to {LIMITS.candidatesMax} files at once with <strong>Upload several resumes</strong>. Names,
+          contact details, age, sex, civil status and religion are <strong>removed automatically</strong> before the AI sees them.
         </p>
+        {allEmpty && !bulkMessage && (
+          <p className="mb-4 rounded-lg bg-indigo-50 px-3 py-2 text-sm text-indigo-800">
+            💡 Tip: click <strong>Upload several resumes</strong> and select all your resume files at once (hold ⌘ or Ctrl to pick several). Boxes are created
+            for you.
+          </p>
+        )}
+        {bulkMessage && (
+          <p role="status" className="mb-4 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
+            {bulkMessage}
+          </p>
+        )}
 
         <div className="grid gap-4 md:grid-cols-2">
           {value.candidates.map((c) => (
