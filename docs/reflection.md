@@ -3,7 +3,7 @@
 **Author:** Marc · **Project:** Graded Mini Project 4.2 · **Live app:** https://shortlist-ai-three.vercel.app · **Repo:** https://github.com/bloje808/shortlist-ai
 
 ## What I built
-ShortlistAI helps HR generalists at small Philippine companies shortlist applicants quickly and fairly. A recruiter pastes a job description and up to 8 resumes. Claude extracts the job's requirements and checks every resume against each one, quoting the exact words from the resume as evidence. The app then calculates a transparent score, ranks the candidates and suggests interview questions. Before any resume reaches the AI, the app removes names, contact details, age, sex, civil status and religion. The app is live, has 24 unit tests and a GitHub Actions pipeline, and was tested on the live site with real AI calls.
+ShortlistAI helps HR generalists at small Philippine companies shortlist applicants quickly and fairly. A recruiter pastes a job description and up to 8 resumes. Claude extracts the job's requirements and checks every resume against each one, quoting the exact words from the resume as evidence. The app then calculates a transparent score, ranks the candidates and suggests interview questions. Before any resume reaches the AI, the app removes names, contact details, age, sex, civil status and religion. The app is live, has 30 unit tests and a GitHub Actions pipeline, and was tested on the live site with real AI calls.
 
 I started this project with no coding experience. I used Claude Code as my AI pair-programmer: it wrote and tested the code, and I made the product decisions, set up the accounts, deployed the app and tested it.
 

@@ -12,7 +12,7 @@ Paste a job description and up to 8 resumes. In under a minute you get:
 Names, contact details, age, sex, civil status, religion and government IDs are **removed before the AI sees anything**.
 
 🌐 **Live app:** https://shortlist-ai-three.vercel.app
-🎬 **2-minute demo:** _link to your video_
+🎬 **2-minute demo:** linked in the course submission
 
 ![CI](https://github.com/bloje808/shortlist-ai/actions/workflows/ci.yml/badge.svg)
 
@@ -40,7 +40,7 @@ HR generalists at Philippine SMEs get dozens to hundreds of applications per rol
 | Data / analytics | Supabase (optional, anonymous usage only) + Vercel Analytics |
 | Deploy | Vercel (auto-deploys from GitHub) |
 | CI | GitHub Actions: lint, type-check, unit tests, build, secret scan; plus a daily uptime check |
-| Tests | Vitest (22 unit tests) |
+| Tests | Vitest (30 unit tests) |
 
 ## How it works
 ```
