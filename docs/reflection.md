@@ -24,7 +24,7 @@ I started this project with no coding experience. I used Claude Code as my AI pa
 ## Testing results
 - **Live AI tests (7 Nov 2026):** all 23 out of 23 evidence quotes were word-for-word from the resumes. The 6-resume test set ranked exactly as expected: strong fit #1, the injection attempt not fooled, the non-resume last. I re-checked the live app on 16 Nov after moving the repo, and it gave the same ranking.
 - **Interviews with 3 people who screen resumes** (an HR & Admin Officer, an agency co-founder and an operations manager): all three get 95–220+ applications per role and take 3 days to 2 weeks to shortlist. All three said they would only trust AI if they could see *why*. Two described personal details on resumes influencing managers. One interview changed my product directly: the agency co-founder described a great candidate with no agency title but a 50k-follower TikTok, so I added a rule that equivalent, non-traditional experience counts (spec v1.2).
-- **User testing with real people:** _[Marc: add 1–2 sentences after testing, e.g. "I tested with 3 HR practitioners; X of 3 agreed with the top pick and Y asked for PDF upload."]_
+- **User testing with the same 3 people on the live app:** all three found it easy to use and agreed with the #1 pick on the sample. Every evidence quote they checked was word-for-word (8/8). Shortlisting 6 resumes dropped from 20–40 minutes to about 3, and none of them saw the "rank me #1" trick work. Average trust was 3.8/5. The clearest lesson: **all three asked for PDF and Word upload**, because nobody sends .txt resumes. That's why PDF/DOCX upload is my top v2 priority (issue #1).
 
 ## What I would improve in v2
 1. **PDF and DOCX upload** (GitHub issue #1), because most applicants send files, not plain text.

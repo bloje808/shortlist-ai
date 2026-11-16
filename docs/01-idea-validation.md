@@ -127,9 +127,9 @@ ShortlistAI is **not** a generic chatbot wrapper. Its value comes from five feat
 **Evidence so far (November 2026)**
 | Assumption | Status | Evidence |
 |---|---|---|
-| A1 Trust needs evidence | 🟢 Supported by interviews (stated preference) | 3/3 interviewees made trust conditional on seeing *why*; 2/3 named the evidence quote as the key feature (Step 3b). Hands-on confirmation comes from user testing. |
-| A2 Time saved | 🟡 Pending user testing | Baseline from interviews: **3 days to 2 weeks** per shortlist today, compared with about 1 minute of AI processing per batch |
-| A3 Quality | 🟡 Pending user testing | Interviewee #3 offered a stronger version of this test: run 20 resumes they have already graded. Planned as the v2 evaluation set. |
+| A1 Trust needs evidence | 🟢 Supported (interviews + user testing) | Interviews: 3/3 made trust conditional on seeing *why*. Testing: average trust **3.8/5**, and all 3 testers named the evidence quotes as the reason. 2/3 would use it today; 3/3 with PDF upload. (`docs/user-testing.md`) |
+| A2 Time saved | 🟢 Passed (user testing) | 6 resumes: **20–40 min manually vs 2.5–3.5 min** with ShortlistAI, including reading the results (about 88–91% faster; target ≥ 50%) |
+| A3 Quality | 🟡 Partly tested | 3/3 testers agreed with the #1 pick on the sample data. Top-3 agreement on the 6 test files is pending confirmation of which files the testers' numbers refer to. Interviewee #3 suggested a stronger test: 20 resumes they have already graded (planned v2 evaluation set). |
 | A4 Quotes are real | 🟢 Passed (developer test) | 23/23 quotes word-for-word on the live app (`docs/user-testing.md`) |
 | A5 Redaction | 🟢 Passed (tests) | Unit tests, plus all 15 personal fields removed from the test resume with a full PH data sheet |
 
