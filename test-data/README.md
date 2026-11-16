@@ -18,8 +18,8 @@ These files are **fictional**: the names are invented, the emails use example.co
 2. **Job title:** type `Recruitment Specialist`.
 3. **Job description:** open `00-job-description.txt`, copy everything (⌘A, then ⌘C), and paste it into the box (⌘V).
 4. **Extra must-haves (optional test):** type `Can work hybrid in Makati 3 days a week`.
-5. **Candidates:** the form starts with 2 boxes. Click **+ Add another candidate** until there are **6**.
-6. For each box, click **Upload .txt** and pick a resume file, in order `01` to `06`. Rename the labels if you like, e.g. "Bianca", "Rodel", "Kristine", "Miguel", "Patricia", "Recipe".
+5. **Candidates:** click **Upload several resumes (.txt)** and select files `01` to `06` together (hold ⌘ or Ctrl to pick several). The boxes are created and labelled for you.
+6. Optionally, rename the labels, e.g. "Bianca", "Rodel", "Kristine", "Miguel", "Patricia", "Recipe".
 7. Click **Screen 6 candidates with AI** and wait 30–90 seconds.
 
 ## What to check (write the results in docs/user-testing.md)

@@ -32,9 +32,11 @@
 | # | Issue (who) | Severity | Fix / status |
 |---|---|---|---|
 | 1 | Only .txt files accepted. "Almost every applicant sends a PDF or Word doc", plus screenshots and scans (all 3) | **High** | v2 – GitHub issue #1 (PDF/DOCX upload), with OCR for scans on the roadmap |
-| 2 | Files must be added one at a time with "+ Add another candidate" (#1, #3) | Medium | Open – bulk multi-file upload |
-| 3 | No sign of progress during the ~1 minute wait (#1) | Low | Open – step-by-step progress indicator |
-| 4 | Didn't see a way to export or share the shortlist (#2) | Medium | Export exists ("Download CSV") but wasn't noticed, so it needs to be more visible. Shareable link is v2 (needs accounts). |
+| 2 | Files must be added one at a time with "+ Add another candidate" (#1, #3) | Medium | ✅ **Fixed** (`95f64bf`): "Upload several resumes" adds up to 8 files at once and labels them from the file names |
+| 3 | No sign of progress during the ~1 minute wait (#1) | Low | ✅ **Fixed** (`1e2510f`): progress bar with elapsed time, an estimate and the current step |
+| 4 | Didn't see a way to export or share the shortlist (#2) | Medium | ✅ **Fixed** (`cb26265`): a prominent green "Download shortlist (Excel / CSV)" button at the top and in a "Share with your team" panel. A shareable link is v2 (needs accounts). |
 | 5 | Wants to set which requirements matter most (#2) | Medium | v2 – custom requirement weights |
-| 6 | Building the candidate list after "Clear" took a moment to figure out (#3) | Low | Open – clearer empty-state hint |
+| 6 | Building the candidate list after "Clear" took a moment to figure out (#3) | Low | ✅ **Fixed** (`95f64bf`): an empty-state tip points to "Upload several resumes" |
 | 7 | Must work smoothly on a phone (#3) | Medium | Layout is responsive (checked at 375 px); a phone test with real users is still to do |
+
+**Fixed after testing:** 4 of the 7 issues (#2, #3, #4, #6), each covered by unit tests and checked in the browser on desktop and phone widths. The remaining items are v2: PDF/DOCX/OCR (issue #1 on GitHub), custom requirement weights, and a real-phone test.
