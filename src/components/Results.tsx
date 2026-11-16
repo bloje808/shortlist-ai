@@ -150,8 +150,12 @@ export default function Results({ data }: { data: ScreenResponse }) {
             {data.candidates.length} candidates · {data.requirements.length} requirements · {(data.durationMs / 1000).toFixed(1)}s · model: {data.model}
           </p>
         </div>
-        <button type="button" onClick={downloadCSV} className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-          Download CSV
+        <button
+          type="button"
+          onClick={downloadCSV}
+          className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+        >
+          ⬇ Download shortlist (Excel / CSV)
         </button>
       </div>
 
@@ -202,6 +206,20 @@ export default function Results({ data }: { data: ScreenResponse }) {
         {data.candidates.map((c, i) => (
           <CandidateCard key={c.candidateId} c={c} requirements={data.requirements} defaultOpen={i === 0} />
         ))}
+      </div>
+
+      <div className="flex flex-col items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-center sm:flex-row sm:justify-between sm:text-left">
+        <p className="text-sm text-emerald-900">
+          <strong>Share with your team:</strong> download the shortlist and open it in Excel or Google Sheets, or attach it to an email to the hiring
+          manager.
+        </p>
+        <button
+          type="button"
+          onClick={downloadCSV}
+          className="shrink-0 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+        >
+          ⬇ Download shortlist (Excel / CSV)
+        </button>
       </div>
 
       <p className="text-center text-xs text-slate-500">
