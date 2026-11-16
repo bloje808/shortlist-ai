@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Results from "@/components/Results";
+import ScreenProgress from "@/components/ScreenProgress";
 import ScreenForm, { newCandidate, type FormState } from "@/components/ScreenForm";
 import { SAMPLE_CANDIDATES, SAMPLE_JOB } from "@/lib/sampleData";
 import { formatZodError, ScreenRequestSchema, type ScreenResponse } from "@/lib/schema";
@@ -97,11 +98,7 @@ export default function Home() {
           </div>
         )}
 
-        {loading && (
-          <div className="mt-8 animate-pulse rounded-2xl border border-indigo-100 bg-white p-6 text-center text-slate-600">
-            Removing personal details → extracting requirements → checking each resume for evidence → ranking…
-          </div>
-        )}
+        {loading && <ScreenProgress candidates={form.candidates.length} />}
 
         <div ref={resultsRef} className="mt-10">
           {result && <Results data={result} />}
