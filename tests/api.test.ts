@@ -3,7 +3,7 @@ import { POST } from "@/app/api/screen/route";
 import { resetRateLimit } from "@/lib/rateLimit";
 import { SAMPLE_CANDIDATES, SAMPLE_JOB } from "@/lib/sampleData";
 import { ScreenRequestSchema } from "@/lib/schema";
-import { buildUserPrompt } from "@/lib/prompt";
+import { buildUserPrompt, SYSTEM_PROMPT } from "@/lib/prompt";
 
 const validBody = {
   jobTitle: SAMPLE_JOB.jobTitle,
@@ -87,6 +87,12 @@ describe("prompt building", () => {
     expect(prompt).toContain('<resume candidate_id="C1">');
     expect(prompt).not.toContain("Applicant A");
     expect(prompt).toContain("<job_description>");
+  });
+
+  it("keeps the fairness rules added after user interviews (spec v1.2)", () => {
+    expect(SYSTEM_PROMPT).toMatch(/non-traditional experience counts/i);
+    expect(SYSTEM_PROMPT).toMatch(/judge content, not presentation/i);
+    expect(SYSTEM_PROMPT).toMatch(/never consider or infer age, sex, gender, civil status, religion/i);
   });
 });
 
