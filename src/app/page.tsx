@@ -109,6 +109,11 @@ export default function Home() {
 
         <footer className="mt-16 border-t border-slate-200 pt-6 text-center text-xs text-slate-500">
           ShortlistAI · AI-assisted screening for HR teams · Built with Next.js, Tailwind CSS and Claude · AI output can be wrong – a human makes the final decision.
+          <div className="mt-2">
+            <a href="https://github.com/bloje808/shortlist-ai" target="_blank" rel="noopener noreferrer" className="font-medium text-indigo-600 hover:underline">
+              Source code on GitHub
+            </a>
+          </div>
         </footer>
       </div>
     </main>
